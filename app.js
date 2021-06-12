@@ -6,6 +6,11 @@ ctx.strokeStyle = "black";
 ctx.fillRect(0,0,canvas.width, canvas.height);
 ctx.strokeRect(0,0,canvas.width, canvas.height);
 
+// Variables
+
+// Vitesse sur X
+vx = 10;
+
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
 
 function dessineLesMorceaux(morceau) {
@@ -21,4 +26,20 @@ function dessineLeSerpent(){
         dessineLesMorceaux(morceau);
     })
 }
+
+
+function faireAvancerSerpent() {
+
+    const head = {x: snake[0].x + vx, y: snake[0].y};
+    snake.unshift(head);
+    snake.pop();
+
+
+}
+faireAvancerSerpent();
+
 dessineLeSerpent();
+
+
+
+    
