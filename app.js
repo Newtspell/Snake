@@ -9,7 +9,9 @@ ctx.strokeRect(0,0,canvas.width, canvas.height);
 // Variables
 
 // Vitesse sur X
-vx = 10;
+vx = 0;
+// Vitesse sur Y
+vy = -10;
 
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
 
@@ -30,7 +32,7 @@ function dessineLeSerpent(){
 
 function faireAvancerSerpent() {
 
-    const head = {x: snake[0].x + vx, y: snake[0].y};
+    const head = {x: snake[0].x + vx, y: snake[0].y + vy};
     snake.unshift(head);
     snake.pop();
 
