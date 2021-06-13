@@ -11,9 +11,9 @@ function nettoieCanvas(){
 // Variables
 
 // Vitesse sur X
-vx = 0;
+vx = 10;
 // Vitesse sur Y
-vy = -10;
+vy = 0;
 
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
 
@@ -60,9 +60,36 @@ function faireAvancerSerpent() {
 
 
 }
-faireAvancerSerpent();
-
 dessineLeSerpent();
+
+document.addEventListener('keydown', changerDirection);
+
+function changerDirection(event) {
+    // console.log(event);
+
+
+    const FLECHE_GAUCHE = 37;
+    const FLECHE_DROITE = 39;
+    const FLECHE_ENHAUT = 38;
+    const FLECHE_ENBAS = 40;
+
+    const direction = event.keyCode;
+
+    const monter = vy === -10;
+    const descendre = vy === 10;
+    const adroite = vx === 10;
+    const agauche = vx === -10;
+
+     // Imaginons que l'on veuille aller à gauche (premier cas)
+    // on appuie sur la touche gauche, donc direction === FLECHE_GAUCHE === true
+    // puis on verifie que l'on est pas entrain d'aller à droite, pour eviter que le serpent se retourne sur lui-même
+    // donc si on va à droite, "adroite === true", donc on écrit !adroite (inverse de adroite, donc false) pour empecher la condition && de s'executer.
+    if(direction === FLECHE_GAUCHE && !adroite) { vx = -10; vy = 0; }
+    if(direction === FLECHE_ENHAUT && !descendre) { vx = 0; vy = -10; }
+    if(direction === FLECHE_DROITE && !agauche) { vx = 10; vy = 0; }
+    if(direction === FLECHE_ENBAS && !monter) { vx = 0; vy = 10; }
+
+}
 
 
 
