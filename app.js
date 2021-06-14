@@ -18,6 +18,8 @@ vy = 0;
 let pommeX = 0;
 // pommeY
 let pommeY = 0;
+// Score
+let score = 0;
 
 
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
@@ -62,10 +64,21 @@ function faireAvancerSerpent() {
 
     const head = {x: snake[0].x + vx, y: snake[0].y + vy};
     snake.unshift(head);
-    snake.pop();
 
+    const serpentMangePomme = snake[0].x === pommeX && snake[0].y === pommeY;
+
+    if(serpentMangePomme) {
+        score += 10;
+        document.getElementById('score').innerHTML = score;
+
+        creerPomme();
+    } else {
+            snake.pop();
+        
+    }
 
 }
+
 dessineLeSerpent();
 
 document.addEventListener('keydown', changerDirection);
