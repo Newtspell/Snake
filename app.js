@@ -38,7 +38,7 @@ function animation(){
             faireAvancerSerpent();
 
             if(finDuJeu()) {
-               
+                recommencer();   
                 return;
             
             }
@@ -178,7 +178,7 @@ function finDuJeu() {
 
 
     if(mordu || toucheMurGauche || toucheMurDroite || toucheMurTop || toucheMurBottom) {
-        console.log("jtm marmotte");
+        
         gameOver = true;
         
     }
@@ -188,3 +188,16 @@ function finDuJeu() {
     return gameOver;
     
 }
+
+function recommencer(){
+    const restart = document.getElementById('recommencer');
+    restart.style.display = "block";
+
+    document.addEventListener('keydown', (e) => {
+        if(e.keyCode === 32) {
+            document.location.reload(true);
+        }
+    })
+
+}
+

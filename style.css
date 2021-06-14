@@ -10,7 +10,7 @@ body {
 }
 
 #canvas {
-    margin-top: 50px;
+    margin-top: 125px;
 }
 
 #score {
@@ -18,3 +18,14 @@ body {
     color: #fefefe;
     font-size: 50px;
 }
+
+#recommencer {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    color: #fefefe;
+    display: none;
+}
+
