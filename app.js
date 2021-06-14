@@ -22,26 +22,23 @@ let pommeY = 0;
 let score = 0;
 // bugDirection
 let bugDirection = false;
+// StopGame
+let stopGame = false;
 
 
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
 
 function animation(){
 
+    if(stopGame === true) {
+        return;
+    } else {
 
         setTimeout(function(){
-
-            bugDirection=false;
+            bugDirection = false;
             nettoieCanvas();
             dessinePomme();
-
             faireAvancerSerpent();
-
-            if(finDuJeu()) {
-                recommencer();   
-                return;
-            
-            }
     
             dessineLeSerpent();
     
@@ -49,8 +46,11 @@ function animation(){
             animation();
     
         }, 100);
-    
+    }
+
+
 }
+    
 animation();
 creerPomme();
 
@@ -74,6 +74,13 @@ function faireAvancerSerpent() {
 
     const head = {x: snake[0].x + vx, y: snake[0].y + vy};
     snake.unshift(head);
+
+    if(finDuJeu()){
+        snake.shift(head);
+        recommencer();
+        stopGame = true;
+        return;
+    }
 
     const serpentMangePomme = snake[0].x === pommeX && snake[0].y === pommeY;
 
