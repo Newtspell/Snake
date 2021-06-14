@@ -20,6 +20,8 @@ let pommeX = 0;
 let pommeY = 0;
 // Score
 let score = 0;
+// bugDirection
+let bugDirection = false;
 
 
 let snake = [{x:140, y:150},{x:130, y:150},{x:120, y:150},{x:110, y:150},]
@@ -28,8 +30,8 @@ function animation(){
 
 
         setTimeout(function(){
-     
 
+            bugDirection=false;
             nettoieCanvas();
             dessinePomme();
 
@@ -93,6 +95,10 @@ document.addEventListener('keydown', changerDirection);
 
 function changerDirection(event) {
     // console.log(event);
+
+    // eviter le bug
+    if(bugDirection) return;
+    bugDirection = true;
 
 
     const FLECHE_GAUCHE = 37;
